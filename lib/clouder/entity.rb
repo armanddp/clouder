@@ -85,7 +85,7 @@ module Clouder
         id = URI.parse(uri)
         # /notes/abc
         if id.path[0,1] == "/"
-          id.path.split("/")[2]
+          id.path =~ /\/(.*\/)(.*)\/versions/ ? $2 : id.path.split("/").last
         else
           id.to_s
         end

@@ -137,7 +137,7 @@ describe "Entity" do
     n.etag.should == etag
     n.last_modified.should == last_modified
   end
-
+  
   it "should let you retrieve saved objects by URI" do
     n = Note.new
     n.text = "My Note"
