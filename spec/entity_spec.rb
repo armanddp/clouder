@@ -76,6 +76,18 @@ describe "Entity" do
     }
     Note.all.size.should == size + 2
   end
+  
+  it "should retrieve all instances with ids" do
+    size = Note.all.size
+    notes = [] 
+    notes << Note.create(:text => "note 1")
+    notes << Note.create(:text => "note 2")
+    
+    notes = Note.all(:resolved => true)
+    notes.each_with_index { |n, i| 
+      n.id.should == notes[i].id
+    }
+  end
 
   it "should retrieve all uris with limit and offset" do
     size = Note.all.size
